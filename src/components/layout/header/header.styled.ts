@@ -102,7 +102,9 @@ export const LoginDiv = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-
+    .activeContent {
+        display: none;
+    }
     div img {
         padding: 15px;
     }
@@ -169,5 +171,37 @@ export const BurgerMenu = styled.div`
             height: 2px;
         }
 
+    }
+`
+
+export const BurgerMenuContent = styled.div`
+    width: 100%;
+    height: 332px;
+    position: absolute;
+    z-index: 2;
+    top: 86px;
+    left: 0px;
+    background-color: ${Colors.white};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+
+        a {
+            text-decoration: none;
+            color: ${Colors.gray};
+            font-size: ${FontInfo.font30};
+            font-weight: ${FontInfo.weight400};
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: ${Colors.primary};
+            }
+        }
     }
 `

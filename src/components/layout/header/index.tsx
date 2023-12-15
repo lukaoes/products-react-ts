@@ -8,7 +8,7 @@ import userIcon from '../../../assets/images/userIcon.png'
 import searchIcon from '../../../assets/images/searchIcon.png'
 import Cart from '../../../assets/images/Cart.png'
 import heart from '../../../assets/images/heart.png'
-import { BurgerMenu, DarkHeader, Div, LoginDiv, MobileDel, NavDiv, UserMobile, WhiteHeader } from './header.styled'
+import { BurgerMenu, BurgerMenuContent, DarkHeader, Div, LoginDiv, MobileDel, NavDiv, UserMobile, WhiteHeader } from './header.styled'
 import { useState } from 'react'
 
 const Header = () => {
@@ -101,6 +101,22 @@ const Header = () => {
                                     <div className={`d2 ${burger ? 'actived2' : ''}`}></div>
                                     <div className={`d3 ${burger ? 'actived3' : ''}`}></div>
                                 </BurgerMenu>
+                                <BurgerMenuContent className={burger ? '' : 'activeContent'}>
+                                    <div>
+                                        <a href="/">
+                                            Home
+                                        </a>
+                                        <a href="/">
+                                            Products
+                                        </a>
+                                        <a href="/">
+                                            Categories
+                                        </a>
+                                        <a href="/">
+                                            About Us
+                                        </a>
+                                    </div>
+                                </BurgerMenuContent>
                             </LoginDiv>
                         </div>
                     </NavDiv>
