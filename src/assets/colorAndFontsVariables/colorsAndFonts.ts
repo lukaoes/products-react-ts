@@ -6,13 +6,16 @@ export const Colors = {
     info: '#FCA311',
     earth: '#47AD97',
     darkBlue: '#1D3557',
-    orange: '#FF7B47'
+    orange: '#FF7B47',
+    gray: '#737373',
+    lightBlue: '#23A6F0'
 }
 
 export const FontInfo = {
     font64: '64px',
     font44: '44px',
     font30: '30px',
+    font24: '24px',
     font21: '21px',
     font20: '20px',
     font19: '19px',

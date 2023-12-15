@@ -4,9 +4,20 @@ import instagram from '../../../assets/images/instagram.png'
 import facebook from '../../../assets/images/facebook.png'
 import twitter from '../../../assets/images/twitter.png'
 import youtube from '../../../assets/images/youtube.png'
-import { DarkHeader, Div } from './header.styled'
+import userIcon from '../../../assets/images/userIcon.png'
+import searchIcon from '../../../assets/images/searchIcon.png'
+import Cart from '../../../assets/images/Cart.png'
+import heart from '../../../assets/images/heart.png'
+import { BurgerMenu, DarkHeader, Div, LoginDiv, MobileDel, NavDiv, UserMobile, WhiteHeader } from './header.styled'
+import { useState } from 'react'
 
 const Header = () => {
+    const [burger, setBurger] = useState<Boolean>(false);
+    const burgerChange = () => {
+        setBurger(!burger)
+    }
+
+
 
     return (
         <div>
@@ -48,6 +59,53 @@ const Header = () => {
                     </div>
                 </Div>
             </DarkHeader>
+            <WhiteHeader>
+                <Div>
+                    <h1>
+                        LukaStore
+                    </h1>
+                    <NavDiv>
+                        <nav>
+                            <a href="/">
+                                Home
+                            </a>
+                            <a href="/">
+                                Products
+                            </a>
+                            <a href="/">
+                                Categories
+                            </a>
+                            <a href="/">
+                                About Us
+                            </a>
+                        </nav>
+                        <div>
+                            <LoginDiv>
+                                <UserMobile>
+                                    <img src={userIcon} alt='user' />
+                                    <h4>
+                                        Login / Register
+                                    </h4>
+                                </UserMobile>
+                                <div>
+                                    <img src={searchIcon} alt='search' />
+                                </div>
+                                <div>
+                                    <img src={Cart} alt='Cart' />
+                                </div>
+                                <MobileDel>
+                                    <img src={heart} alt='heart' />
+                                </MobileDel>
+                                <BurgerMenu onClick={() => burgerChange()}>
+                                    <div className={`d1 ${burger ? 'actived1' : ''}`}></div>
+                                    <div className={`d2 ${burger ? 'actived2' : ''}`}></div>
+                                    <div className={`d3 ${burger ? 'actived3' : ''}`}></div>
+                                </BurgerMenu>
+                            </LoginDiv>
+                        </div>
+                    </NavDiv>
+                </Div>
+            </WhiteHeader>
         </div>
     )
 }
