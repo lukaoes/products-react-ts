@@ -25,7 +25,7 @@ const Card: FC<CardProps> = ({ item }) => {
                 </p>
                 <h3>Price: ${item.price}</h3>
 
-                <NavLink to={`products/${item.id}`} >More Details</NavLink>
+                <NavLink to={`${item.id}`} >More Details</NavLink>
             </div>
         </CardLayout >
     )

@@ -32,7 +32,7 @@ const Header = () => {
                         <div>
                             <img src={envelopeIcon} alt='envelopeIcon' />
                             <h6>
-                                michelle.rivera@example.com
+                                luka.pitsk@gmail.com
                             </h6>
                         </div>
                     </div>
