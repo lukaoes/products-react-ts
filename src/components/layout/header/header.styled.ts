@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { Colors, FontInfo } from "../../../assets/colorAndFontsVariables/colorsAndFonts";
 
+export const MainDiv = styled.div`
+    margin-bottom: 50px;
+`
+
 export const Div = styled.div`
     width: 1438px;
     margin: 0 auto;

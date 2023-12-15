@@ -8,7 +8,7 @@ import userIcon from '../../../assets/images/userIcon.png'
 import searchIcon from '../../../assets/images/searchIcon.png'
 import Cart from '../../../assets/images/Cart.png'
 import heart from '../../../assets/images/heart.png'
-import { BurgerMenu, BurgerMenuContent, DarkHeader, Div, LoginDiv, MobileDel, NavDiv, UserMobile, WhiteHeader } from './header.styled'
+import { BurgerMenu, BurgerMenuContent, DarkHeader, Div, LoginDiv, MainDiv, MobileDel, NavDiv, UserMobile, WhiteHeader } from './header.styled'
 import { useState } from 'react'
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
 
 
     return (
-        <div>
+        <MainDiv>
             <DarkHeader>
                 <Div>
                     <div>
@@ -122,7 +122,7 @@ const Header = () => {
                     </NavDiv>
                 </Div>
             </WhiteHeader>
-        </div>
+        </MainDiv>
     )
 }
 
