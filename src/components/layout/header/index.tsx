@@ -18,8 +18,6 @@ const Header = () => {
         setBurger(!burger)
     }
 
-
-
     return (
         <MainDiv>
             <DarkHeader>
@@ -63,7 +61,9 @@ const Header = () => {
             <WhiteHeader>
                 <Div>
                     <h1>
-                        LukaStore
+                        <NavLink to='/'>
+                            LukaStore
+                        </NavLink>
                     </h1>
                     <NavDiv>
                         <nav>

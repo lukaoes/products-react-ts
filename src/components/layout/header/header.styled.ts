@@ -45,6 +45,21 @@ export const WhiteHeader = styled.div`
     gap: 40px;
     background-color: ${Colors.white};
 
+    a {
+        text-decoration: none;
+        color: ${Colors.primary};
+        font-size: ${FontInfo.font24};
+        font-weight: ${FontInfo.weight700};
+        padding: 13px 42px 13px 0px;
+        margin-right: 40px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: ${Colors.gray};
+        }
+    }
+
     h1 {
         color: ${Colors.primary};
         font-size: ${FontInfo.font24};

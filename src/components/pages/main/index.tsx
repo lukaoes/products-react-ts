@@ -32,17 +32,17 @@ const Main = () => {
                 <div>
                     <img src={Iphone} alt="iphone" />
                     <h2>Buy iPhone for low price!</h2>
-                    <a href="/">More Info</a>
+                    <a href="/products/1">More Info</a>
                 </div>
                 <div>
                     <img src={Laptop} alt="laptop" />
                     <h2>Lowest prices on laptops!</h2>
-                    <a href="/">More Info</a>
+                    <a href="/products/7">More Info</a>
                 </div>
                 <div>
                     <img src={perfume} alt="perfume" />
                     <h2>Get authentic perfume from us!</h2>
-                    <a href="/">More Info</a>
+                    <a href="products/15">More Info</a>
                 </div>
             </Carousel>
 

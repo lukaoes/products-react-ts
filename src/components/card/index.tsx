@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { CardLayout } from "./card.styled";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface CardProps {
     item: {
@@ -13,8 +13,6 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ item }) => {
-    const { id } = useParams()
-    console.log(id)
     return (
         <CardLayout>
             <img src={item.thumbnail} alt='a' />
@@ -27,7 +25,7 @@ const Card: FC<CardProps> = ({ item }) => {
                 </p>
                 <h3>Price: ${item.price}</h3>
 
-                <NavLink to='products/:id' >More Details</NavLink>
+                <NavLink to={`products/${item.id}`} >More Details</NavLink>
             </div>
         </CardLayout >
     )
