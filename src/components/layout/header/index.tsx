@@ -10,6 +10,7 @@ import Cart from '../../../assets/images/Cart.png'
 import heart from '../../../assets/images/heart.png'
 import { BurgerMenu, BurgerMenuContent, DarkHeader, Div, LoginDiv, MainDiv, MobileDel, NavDiv, UserMobile, WhiteHeader } from './header.styled'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
     const [burger, setBurger] = useState<Boolean>(false);
@@ -66,18 +67,18 @@ const Header = () => {
                     </h1>
                     <NavDiv>
                         <nav>
-                            <a href="/">
+                            <NavLink to="/">
                                 Home
-                            </a>
-                            <a href="/">
+                            </NavLink>
+                            <NavLink to="products">
                                 Products
-                            </a>
-                            <a href="/">
+                            </NavLink>
+                            <NavLink to="categories">
                                 Categories
-                            </a>
-                            <a href="/">
+                            </NavLink>
+                            <NavLink to="about">
                                 About Us
-                            </a>
+                            </NavLink>
                         </nav>
                         <div>
                             <LoginDiv>
@@ -103,18 +104,18 @@ const Header = () => {
                                 </BurgerMenu>
                                 <BurgerMenuContent className={burger ? '' : 'activeContent'}>
                                     <div>
-                                        <a href="/">
+                                        <NavLink to="/">
                                             Home
-                                        </a>
-                                        <a href="/">
+                                        </NavLink>
+                                        <NavLink to="products">
                                             Products
-                                        </a>
-                                        <a href="/">
+                                        </NavLink>
+                                        <NavLink to="categories">
                                             Categories
-                                        </a>
-                                        <a href="/">
+                                        </NavLink>
+                                        <NavLink to="about">
                                             About Us
-                                        </a>
+                                        </NavLink>
                                     </div>
                                 </BurgerMenuContent>
                             </LoginDiv>
