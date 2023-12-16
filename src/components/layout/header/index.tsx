@@ -73,8 +73,8 @@ const Header = () => {
                             <NavLink to="products">
                                 Products
                             </NavLink>
-                            <NavLink to="categories">
-                                Categories
+                            <NavLink to="transactions">
+                                Transactions
                             </NavLink>
                             <NavLink to="about">
                                 About Us
@@ -110,8 +110,8 @@ const Header = () => {
                                         <NavLink to="products">
                                             Products
                                         </NavLink>
-                                        <NavLink to="categories">
-                                            Categories
+                                        <NavLink to="transactions">
+                                            transactions
                                         </NavLink>
                                         <NavLink to="about">
                                             About Us
