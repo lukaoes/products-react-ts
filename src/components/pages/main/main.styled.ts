@@ -21,12 +21,10 @@ export const DivForMain = styled.div`
     }
 
     h1 {
-        font-size: ${FontInfo.font44};
+        font-size: ${FontInfo.font30};
         margin-bottom: 20px;
         margin-top: 40px;
-        border-bottom: 3px solid ${Colors.primary};
         color: ${Colors.primary};
-        width: 300px;
     }
 
     @media (max-width: 1217px) {

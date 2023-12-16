@@ -55,6 +55,7 @@ export const WhiteHeader = styled.div`
         cursor: pointer;
         transition: all 0.3s ease-in-out;
 
+
         &:hover {
             color: ${Colors.gray};
         }
@@ -68,6 +69,11 @@ export const WhiteHeader = styled.div`
         margin-right: 40px;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
+
+        @media (max-width: 930px) {
+            margin-right: 0;
+            padding-right: 20px;
+        }
 
         &:hover {
             color: ${Colors.gray};

@@ -2,10 +2,15 @@ import styled from "styled-components";
 import { Colors, FontInfo } from "../../assets/colorAndFontsVariables/colorsAndFonts";
 
 export const SingleProdLayout = styled.div`
-    width: 900px;
+    max-width: 900px;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
+
+    @media (max-width: 930px) {
+        flex-direction: column;
+       
+    }
 `
 
 export const LeftDiv = styled.div`
@@ -13,6 +18,7 @@ export const LeftDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 0 auto;
     .control-arrow, .control-next {
         display: none;
     }
@@ -41,7 +47,27 @@ export const LeftDiv = styled.div`
 
 export const RightDiv = styled.div`
     width: 405px;
-    
+    margin: 0 auto;
+    @media (max-width: 930px) {
+        text-align: center;
+       
+    }
+
+    div button {
+        padding: 10px;
+        border: 1px solid ${Colors.secondary};
+        color: ${Colors.white};
+        background-color: ${Colors.secondary};
+        border-radius: 8px;
+        margin-top: 25px;
+        font-size: ${FontInfo.font20};
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
 
     div h1 {
         font-size: ${FontInfo.font30};

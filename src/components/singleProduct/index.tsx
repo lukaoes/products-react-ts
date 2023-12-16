@@ -43,6 +43,11 @@ const SingleProduct = () => {
         })
     }, [])
 
+    const [addCart, setAddCart] = useState<Boolean>(false)
+    const addToCart = () => {
+        return setAddCart(!addCart)
+    }
+
 
     return (
         <SingleProdLayout>
@@ -87,6 +92,12 @@ const SingleProduct = () => {
                     <h5>
                         RATING: {singleProd.rating} / 5 &#11088;
                     </h5>
+                    <button onClick={() => addToCart()}>
+                        Add To Cart
+                    </button>
+                    <div>
+                        {addCart ? <p>Coming Soon...</p> : ''}
+                    </div>
                 </div>
             </RightDiv>
 
