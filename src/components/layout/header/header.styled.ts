@@ -3,6 +3,7 @@ import { Colors, FontInfo } from "../../../assets/colorAndFontsVariables/colorsA
 
 export const MainDiv = styled.div`
     margin-bottom: 50px;
+    box-shadow: 1px 4px 9px -2px rgba(0,0,0,0.35);
 `
 
 export const Div = styled.div`
