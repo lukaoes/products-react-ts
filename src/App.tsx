@@ -15,6 +15,7 @@ function App() {
           <Route path='products' element={<Products />} />
           <Route path='products/:id' element={<SingleProduct />} />
           <Route path='categories' element={<Categories />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
