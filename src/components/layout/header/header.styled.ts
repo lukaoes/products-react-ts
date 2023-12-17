@@ -58,9 +58,19 @@ export const MainDiv = styled.div`
                 }
             }
 
+            img {
+                width: 200px;
+            }
+
             h1 {
                 font-size: ${FontInfo.font20};
                 font-weight: ${FontInfo.weight600};
+            }
+
+            h3 {
+                font-size: ${FontInfo.font14};
+                font-weight: ${FontInfo.weight400};
+                margin: 0;
             }
 
             input {

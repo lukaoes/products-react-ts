@@ -20,7 +20,7 @@ interface user {
     gender: string;
     id: number;
     image: string;
-    lastname: string;
+    lastName: string;
     username: string
 }
 
@@ -30,10 +30,7 @@ const Header = () => {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [loggedIn, setLoggedIn] = useState<Boolean>(false)
-    // const [userData, setUserData] = useState<user>({})
-
-    console.log(loggedIn)
-
+    const [userData, setUserData] = useState<user | null>(null)
 
     const login = () => {
 
@@ -49,18 +46,17 @@ const Header = () => {
         if (username == loginData.username && password == loginData.password) {
             axios.post('https://dummyjson.com/auth/login', loginData)
                 .then(response => {
-                    // setUserData(response.data)
+                    setUserData(response.data)
                     setLoggedIn(true);
                     setModal(false)
+                    console.log(userData)
+
                 })
         } else {
+            setLoggedIn(false);
             alert('invalid password or username')
         }
     };
-
-
-
-
 
     const burgerChange = () => {
         setBurger(!burger)
@@ -69,7 +65,6 @@ const Header = () => {
     const modalPop = () => {
         setModal(!modal)
     }
-
 
     return (
         <MainDiv>
@@ -98,7 +93,26 @@ const Header = () => {
                             <button onClick={login}>
                                 Log In
                             </button>
-                        </> : ''}
+                        </> : <>
+                            <img src={userData?.image} />
+                            <h3>
+                                Username: {userData?.username}
+
+                            </h3>
+                            <h3> (userId: {userData?.id})</h3>
+                            <h3>
+                                Fist Name: {userData?.firstName}
+                            </h3>
+                            <h3>
+                                Last Name: {userData?.lastName}
+                            </h3>
+                            <h3>
+                                Email: {userData?.email}
+                            </h3>
+                            <h3>
+                                Gender: {userData?.gender}
+                            </h3>
+                        </>}
                         {loggedIn ?
                             <button onClick={() => setLoggedIn(false)}>
                                 Log Out
@@ -160,9 +174,11 @@ const Header = () => {
                             <NavLink to="products">
                                 Products
                             </NavLink>
-                            <NavLink to="transactions">
-                                Transactions
-                            </NavLink>
+                            {loggedIn ?
+                                <NavLink to="transactions">
+                                    Transactions
+                                </NavLink>
+                                : ''}
                             <NavLink to="about">
                                 About Us
                             </NavLink>
