@@ -154,9 +154,16 @@ export const WhiteHeader = styled.div`
         transition: all 0.3s ease-in-out;
 
         @media (max-width: 930px) {
-            margin-right: 0;
-            padding-right: 20px;
+            margin: 0;
         }
+
+        a{
+            @media (max-width: 930px) {
+            margin-right: 0;
+            padding: 13px 5px 13px 0px;
+            margin: 0;
+        }
+        } 
 
         &:hover {
             color: ${Colors.gray};

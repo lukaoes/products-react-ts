@@ -223,9 +223,10 @@ const Header = () => {
                                         <NavLink to="products">
                                             Products
                                         </NavLink>
-                                        <NavLink to="transactions">
-                                            transactions
-                                        </NavLink>
+                                        {loggedIn ?
+                                            <NavLink to="transactions">
+                                                Transactions
+                                            </NavLink> : ''}
                                         <NavLink to="about">
                                             About Us
                                         </NavLink>
