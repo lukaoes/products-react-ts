@@ -29,8 +29,12 @@ const Header = () => {
     const [modal, setModal] = useState<Boolean>(false)
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [loggedIn, setLoggedIn] = useState<Boolean>(false)
-    const [userData, setUserData] = useState<user | null>(null)
+    const [loggedIn, setLoggedIn] = useState<boolean>(
+        Boolean(localStorage.getItem('loggedIn'))
+    );
+    const [userData, setUserData] = useState<user | null>(
+        JSON.parse(localStorage.getItem('userData') || 'null')
+    );
 
     const login = () => {
 
@@ -47,10 +51,10 @@ const Header = () => {
             axios.post('https://dummyjson.com/auth/login', loginData)
                 .then(response => {
                     setUserData(response.data)
-                    setLoggedIn(true);
+                    setLoggedIn(true)
                     setModal(false)
-                    console.log(userData)
-
+                    localStorage.setItem('loggedIn', 'true')
+                    localStorage.setItem('userData', JSON.stringify(response.data))
                 })
         } else {
             setLoggedIn(false);
