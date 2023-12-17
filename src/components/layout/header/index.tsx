@@ -20,6 +20,22 @@ const Header = () => {
 
     return (
         <MainDiv>
+            <div className='modalBg'>
+                <div className='modal'>
+                    <h1>
+                        Username:
+                    </h1>
+                    <input type='text' name='text' placeholder='Username...' />
+                    <h1>
+                        Password:
+                    </h1>
+                    <input type='password' name='text' placeholder='Password...' />
+
+                    <button>
+                        Log In
+                    </button>
+                </div>
+            </div>
             <DarkHeader>
                 <Div>
                     <div>
@@ -82,12 +98,14 @@ const Header = () => {
                         </nav>
                         <div>
                             <LoginDiv>
-                                <UserMobile>
+                                <div className='login'>
                                     <img src={userIcon} alt='user' />
-                                    <h4>
-                                        Login / Register
-                                    </h4>
-                                </UserMobile>
+                                    <UserMobile>
+                                        <h4>
+                                            Login / Register
+                                        </h4>
+                                    </UserMobile>
+                                </div>
                                 <div>
                                     <img src={searchIcon} alt='search' />
                                 </div>

@@ -4,6 +4,65 @@ import { Colors, FontInfo } from "../../../assets/colorAndFontsVariables/colorsA
 export const MainDiv = styled.div`
     margin-bottom: 50px;
     box-shadow: 1px 4px 9px -2px rgba(0,0,0,0.35);
+    position: relative;
+
+    .modalBg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 3;
+
+        .modal{
+            z-index: 4;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fefefe;
+            padding: 40px;
+            border: 1px solid #888;
+            max-width: 80%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+
+            button {
+                padding: 10px;
+                background-color: ${Colors.earth};
+                border: 1px solid ${Colors.earth};
+                color: ${Colors.white};
+                cursor: pointer;
+                width: 100%;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    background-color: ${Colors.primary};
+                }
+            }
+
+            h1 {
+                font-size: ${FontInfo.font20};
+                font-weight: ${FontInfo.weight600};
+            }
+
+            input {
+                width: 300px;
+                padding: 20px 20px 10px 20px;
+                border: none;
+                border-bottom: 1px solid ${Colors.primary};
+                font-size: ${FontInfo.font16}
+
+            }
+
+        }
+    }
+
+
 `
 
 export const Div = styled.div`
@@ -134,11 +193,17 @@ export const LoginDiv = styled.div`
     div img {
         padding: 15px;
     }
+
+    .login {
+        margin: 0 auto;
+        display: flex;
+    }
 `
 export const UserMobile = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
      @media (max-width: 650px) {
         display: none;
     }
