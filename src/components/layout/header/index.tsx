@@ -8,34 +8,105 @@ import userIcon from '../../../assets/images/userIcon.png'
 import searchIcon from '../../../assets/images/searchIcon.png'
 import Cart from '../../../assets/images/Cart.png'
 import heart from '../../../assets/images/heart.png'
+import userPic from '../../../assets/images/userPic.png'
 import { BurgerMenu, BurgerMenuContent, DarkHeader, Div, LoginDiv, MainDiv, MobileDel, NavDiv, UserMobile, WhiteHeader } from './header.styled'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
+
+interface user {
+    email: string;
+    firstName: string;
+    gender: string;
+    id: number;
+    image: string;
+    lastname: string;
+    username: string
+}
 
 const Header = () => {
-    const [burger, setBurger] = useState<Boolean>(false);
+    const [burger, setBurger] = useState<Boolean>(false)
+    const [modal, setModal] = useState<Boolean>(false)
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [loggedIn, setLoggedIn] = useState<Boolean>(false)
+    // const [userData, setUserData] = useState<user>({})
+
+    console.log(loggedIn)
+
+
+    const login = () => {
+
+        if (!username.trim() || !password.trim()) {
+            return alert('Username and password are required.')
+        }
+
+        const loginData = {
+            username: 'kminchelle',
+            password: '0lelplR',
+        };
+
+        if (username == loginData.username && password == loginData.password) {
+            axios.post('https://dummyjson.com/auth/login', loginData)
+                .then(response => {
+                    // setUserData(response.data)
+                    setLoggedIn(true);
+                    setModal(false)
+                })
+        } else {
+            alert('invalid password or username')
+        }
+    };
+
+
+
+
+
     const burgerChange = () => {
         setBurger(!burger)
     }
 
+    const modalPop = () => {
+        setModal(!modal)
+    }
+
+
     return (
         <MainDiv>
-            <div className='modalBg'>
-                <div className='modal'>
-                    <h1>
-                        Username:
-                    </h1>
-                    <input type='text' name='text' placeholder='Username...' />
-                    <h1>
-                        Password:
-                    </h1>
-                    <input type='password' name='text' placeholder='Password...' />
+            {modal ?
+                <div className='modalBg'>
+                    <div className='modal'>
+                        <p onClick={() => modalPop()} className='x'>&#10060;</p>
+                        {!loggedIn ? <>
+                            <h1>
+                                Username: <span>kminchelle</span>
+                            </h1>
+                            <input
+                                onChange={(e) => setUsername(e.target.value)}
+                                type='text'
+                                name='text'
+                                placeholder='Username...' />
+                            <h1>
+                                Password: <span>0lelplR</span>
+                            </h1>
+                            <input
+                                onChange={(e) => setPassword(e.target.value)}
+                                type='password'
+                                name='text'
+                                placeholder='Password...' />
 
-                    <button>
-                        Log In
-                    </button>
+                            <button onClick={login}>
+                                Log In
+                            </button>
+                        </> : ''}
+                        {loggedIn ?
+                            <button onClick={() => setLoggedIn(false)}>
+                                Log Out
+                            </button>
+                            : ''}
+                    </div>
                 </div>
-            </div>
+                : ''}
             <DarkHeader>
                 <Div>
                     <div>
@@ -98,12 +169,16 @@ const Header = () => {
                         </nav>
                         <div>
                             <LoginDiv>
-                                <div className='login'>
-                                    <img src={userIcon} alt='user' />
+                                <div onClick={() => modalPop()} className='login'>
+                                    {loggedIn ? <img className='userPic' src={userPic} alt='profile picture' /> :
+                                        <img src={userIcon} alt='user' />
+                                    }
                                     <UserMobile>
-                                        <h4>
-                                            Login / Register
-                                        </h4>
+                                        {loggedIn ? <h4>Hello, Jeanne</h4> :
+                                            <h4>
+                                                Login / Register
+                                            </h4>
+                                        }
                                     </UserMobile>
                                 </div>
                                 <div>
@@ -141,7 +216,7 @@ const Header = () => {
                     </NavDiv>
                 </Div>
             </WhiteHeader>
-        </MainDiv>
+        </MainDiv >
     )
 }
 

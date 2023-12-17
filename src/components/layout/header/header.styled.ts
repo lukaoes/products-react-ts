@@ -31,6 +31,18 @@ export const MainDiv = styled.div`
             align-items: flex-start;
             gap: 20px;
 
+            span {
+                opacity: 0.3;
+                font-size: ${FontInfo.font14};
+                font-weight: ${FontInfo.weight400};
+                
+            }
+
+            .x{
+                margin-left: auto;
+                cursor: pointer;
+            }
+
             button {
                 padding: 10px;
                 background-color: ${Colors.earth};
@@ -39,6 +51,7 @@ export const MainDiv = styled.div`
                 cursor: pointer;
                 width: 100%;
                 transition: all 0.3s ease-in-out;
+                font-size: ${FontInfo.font19};
 
                 &:hover {
                     background-color: ${Colors.primary};
@@ -197,6 +210,12 @@ export const LoginDiv = styled.div`
     .login {
         margin: 0 auto;
         display: flex;
+
+        .userPic {
+            padding: 0;
+            height: 30px;
+            border-radius: 100%;
+        }
     }
 `
 export const UserMobile = styled.div`
