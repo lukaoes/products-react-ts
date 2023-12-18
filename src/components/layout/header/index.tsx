@@ -11,7 +11,7 @@ import heart from '../../../assets/images/heart.png'
 import userPic from '../../../assets/images/userPic.png'
 import { BurgerMenu, BurgerMenuContent, DarkHeader, Div, LoginDiv, MainDiv, MobileDel, NavDiv, UserMobile, WhiteHeader } from './header.styled'
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Route } from 'react-router-dom'
 import axios from 'axios'
 
 interface user {
@@ -205,7 +205,9 @@ const Header = () => {
                                     <img src={searchIcon} alt='search' />
                                 </div>
                                 <div>
-                                    <img src={Cart} alt='Cart' />
+                                    <NavLink className='cart' to='cart'>
+                                        <img src={Cart} alt='Cart' />
+                                    </NavLink>
                                 </div>
                                 <MobileDel>
                                     <img src={heart} alt='heart' />

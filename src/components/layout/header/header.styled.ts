@@ -224,6 +224,11 @@ export const LoginDiv = styled.div`
         padding: 15px;
     }
 
+    .cart {
+        margin: 0;
+        padding: 0;
+    }
+
     .login {
         margin: 0 auto;
         display: flex;
