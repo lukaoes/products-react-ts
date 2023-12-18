@@ -5,6 +5,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { LeftDiv, RightDiv, SingleProdLayout } from "./singleProduct.styled";
 
+
+export const prodsArray: number[] = []
+
+
 interface Details {
     title: string;
     brand: string;
@@ -38,14 +42,15 @@ const SingleProduct = () => {
         axios.get(`https://dummyjson.com/products/${id}`).then((res) => {
             setSingleProd(res.data)
             setTimeout(() => {
-                console.log(singleProd)
             }, 1000)
         })
     }, [])
 
-    const [addCart, setAddCart] = useState<Boolean>(false)
+
+
     const addToCart = () => {
-        return setAddCart(!addCart)
+        prodsArray.push(singleProd.id)
+        console.log(prodsArray)
     }
 
 
@@ -92,12 +97,9 @@ const SingleProduct = () => {
                     <h5>
                         RATING: {singleProd.rating} / 5 &#11088;
                     </h5>
-                    <button onClick={() => addToCart()}>
+                    <button onClick={addToCart}>
                         Add To Cart
                     </button>
-                    <div>
-                        {addCart ? <p>Coming Soon...</p> : ''}
-                    </div>
                 </div>
             </RightDiv>
 
@@ -107,21 +109,3 @@ const SingleProduct = () => {
 }
 
 export default SingleProduct
-
-{/* 
-
-<h1>
-category: {singleProd.category}
-</h1>
-
-
-
-
-
-<h1>
-rating: {singleProd.rating}
-</h1>
-<h1>
-stock: {singleProd.stock}
-</h1>
-*/}
