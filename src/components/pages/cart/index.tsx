@@ -2,6 +2,8 @@ import axios from "axios"
 import { CartLayout } from "./cart.styled"
 import { prodsArray } from "../../singleProduct"
 import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { selectUser } from "../../../redux/slice"
 console.log(prodsArray)
 
 interface Details {
@@ -33,19 +35,23 @@ const Cart = () => {
         title: "",
     })
 
-    const asdasd = () => {
+    const isLoggedIn = useSelector(selectUser)
+
+    prodsArray.map((item) => {
         useEffect(() => {
-            axios.get(`https://dummyjson.com/products/1`).then((res) => {
+            axios.get(`https://dummyjson.com/products/${item}`).then((res) => {
                 setCartProds(res.data)
                 console.log(cartProds)
             })
         }, [])
-    }
+    })
+
+
 
 
     return (
         <CartLayout>
-            <button onClick={asdasd}>aaaaaaaaaaaaaaa</button>
+            {isLoggedIn ? (<button>Check Out</button>) : 'Please log in if you want to Check Out.'}
         </CartLayout>
     )
 }

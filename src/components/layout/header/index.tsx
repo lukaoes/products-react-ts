@@ -58,7 +58,6 @@ const Header = () => {
                     setUserData(response.data)
                     setModal(false)
                     localStorage.setItem('userData', JSON.stringify(response.data))
-                    localStorage.setItem('isLoggedIn', 'true');
                 })
         } else {
             dispatch(userLogoutEvent())
