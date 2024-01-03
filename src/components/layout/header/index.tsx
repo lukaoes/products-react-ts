@@ -13,6 +13,10 @@ import { BurgerMenu, BurgerMenuContent, DarkHeader, Div, LoginDiv, MainDiv, Mobi
 import { useState } from 'react'
 import { NavLink, Route } from 'react-router-dom'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { selectUser, userLoginEvent, userLogoutEvent } from '../../../redux/slice'
+
 
 interface user {
     email: string;
@@ -29,13 +33,13 @@ const Header = () => {
     const [modal, setModal] = useState<Boolean>(false)
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [loggedIn, setLoggedIn] = useState<boolean>(
-        Boolean(localStorage.getItem('loggedIn'))
-    );
+
     const [userData, setUserData] = useState<user | null>(
         JSON.parse(localStorage.getItem('userData') || 'null')
     );
-
+    const dispatch = useDispatch()
+    const isLoggedIn = useSelector(selectUser)
+    console.log(isLoggedIn)
     const login = () => {
 
         if (!username.trim() || !password.trim()) {
@@ -50,17 +54,22 @@ const Header = () => {
         if (username == loginData.username && password == loginData.password) {
             axios.post('https://dummyjson.com/auth/login', loginData)
                 .then(response => {
+                    dispatch(userLoginEvent())
                     setUserData(response.data)
-                    setLoggedIn(true)
                     setModal(false)
-                    localStorage.setItem('loggedIn', 'true')
                     localStorage.setItem('userData', JSON.stringify(response.data))
+                    localStorage.setItem('isLoggedIn', 'true');
                 })
         } else {
-            setLoggedIn(false);
+            dispatch(userLogoutEvent())
             alert('invalid password or username')
         }
     };
+
+    const logout = () => {
+        dispatch(userLogoutEvent())
+        localStorage.setItem('isLoggedIn', 'false');
+    }
 
     const burgerChange = () => {
         setBurger(!burger)
@@ -76,7 +85,7 @@ const Header = () => {
                 <div className='modalBg'>
                     <div className='modal'>
                         <p onClick={() => modalPop()} className='x'>&#10060;</p>
-                        {!loggedIn ? <>
+                        {!isLoggedIn ? <>
                             <h1>
                                 Username: <span>kminchelle</span>
                             </h1>
@@ -117,8 +126,8 @@ const Header = () => {
                                 Gender: {userData?.gender}
                             </h3>
                         </>}
-                        {loggedIn ?
-                            <button onClick={() => setLoggedIn(false)}>
+                        {isLoggedIn ?
+                            <button onClick={() => logout()}>
                                 Log Out
                             </button>
                             : ''}
@@ -178,7 +187,7 @@ const Header = () => {
                             <NavLink to="products">
                                 Products
                             </NavLink>
-                            {loggedIn ?
+                            {isLoggedIn ?
                                 <NavLink to="transactions">
                                     Transactions
                                 </NavLink>
@@ -190,11 +199,11 @@ const Header = () => {
                         <div>
                             <LoginDiv>
                                 <div onClick={() => modalPop()} className='login'>
-                                    {loggedIn ? <img className='userPic' src={userPic} alt='profile picture' /> :
+                                    {isLoggedIn ? <img className='userPic' src={userPic} alt='profile picture' /> :
                                         <img src={userIcon} alt='user' />
                                     }
                                     <UserMobile>
-                                        {loggedIn ? <h4>Hello, Jeanne</h4> :
+                                        {isLoggedIn ? <h4>Hello, Jeanne</h4> :
                                             <h4>
                                                 Login / Register
                                             </h4>
@@ -225,7 +234,7 @@ const Header = () => {
                                         <NavLink to="products">
                                             Products
                                         </NavLink>
-                                        {loggedIn ?
+                                        {isLoggedIn ?
                                             <NavLink to="transactions">
                                                 Transactions
                                             </NavLink> : ''}
