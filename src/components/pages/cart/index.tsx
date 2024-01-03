@@ -1,25 +1,51 @@
+import axios from "axios"
 import { CartLayout } from "./cart.styled"
-import { useState } from "react";
+import { prodsArray } from "../../singleProduct"
+import { useState, useEffect } from "react"
+console.log(prodsArray)
 
+interface Details {
+    title: string;
+    brand: string;
+    category: string;
+    description: string;
+    discountPercentage: number;
+    id: number;
+    images?: string[];
+    price: number;
+    rating: number;
+    stock: number;
+    thumbnail: string;
+}
 
 const Cart = () => {
+    const [cartProds, setCartProds] = useState<Details>({
+        brand: "",
+        category: "",
+        description: "",
+        discountPercentage: 0,
+        id: 0,
+        images: [],
+        price: 0,
+        rating: 0,
+        stock: 0,
+        thumbnail: "",
+        title: "",
+    })
 
-    const [loggedIn, setLoggedIn] = useState<boolean>(
-        Boolean(localStorage.getItem('loggedIn'))
-    );
-
-    const cartLogged = () => {
-        if (loggedIn) {
-            return <div>here your products</div>
-        } else {
-            return <div>you need to log in</div>
-        }
+    const asdasd = () => {
+        useEffect(() => {
+            axios.get(`https://dummyjson.com/products/1`).then((res) => {
+                setCartProds(res.data)
+                console.log(cartProds)
+            })
+        }, [])
     }
 
 
     return (
         <CartLayout>
-            {cartLogged()}
+            <button onClick={asdasd}>aaaaaaaaaaaaaaa</button>
         </CartLayout>
     )
 }

@@ -41,8 +41,6 @@ const SingleProduct = () => {
     useEffect(() => {
         axios.get(`https://dummyjson.com/products/${id}`).then((res) => {
             setSingleProd(res.data)
-            setTimeout(() => {
-            }, 1000)
         })
     }, [])
 
